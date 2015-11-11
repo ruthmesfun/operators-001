@@ -3,12 +3,14 @@
 ## Objectives
 
 1. Use the ternary operator (`?:`).
-2. Review using comparison operators and boolean operators.
-3. Practice implementing flow control using `if`, `elsif`, and `else` statements.
+2. Understand when to use the ternary operator
+3. Understand the use of statement modifiers
+4. Review using comparison operators and boolean operators.
+3. Practice implementing control flow using `if`, `elsif`, and `else` statements.
 
 ## Reviewing Operations
 
-In this lab, we'll be combining our knowledge of operators (like comparison and boolean operators) with our new understanding of flow control using `if`, `elsif`, and `else` statements. 
+In this lab, we'll be combining our knowledge of operators (like comparison and boolean operators) with our new understanding of control flow using `if`, `elsif`, and `else` statements. 
 
 This lab will require you to use the comparison operators (`>`, `<`, `==`, etc.) and boolean operators that you learned about in the previous unit.
 
@@ -16,7 +18,9 @@ This lab will require you to use a new operator that you haven't been introduced
 
 ## The Ternary Operator `?:`
 
-The ternary operator (`?:`) is another type of comparison operator that is used in the context of `if` and `else` statements. Let's take this `if`/`else` statement pair and express it with a ternary operator instead: 
+The ternary operator (`?:`) is another type of comparison operator that is used in the context of `if` and `else` statements. Its best use case is to replace a simple `if`/`else` statement where you're basically saying: if this is true do something; if it's false do something else. If you have an `if` statement that requires an `elsif`, a ternary operator is not the best choice. 
+
+Let's take this `if`/`else` statement pair and express it with a ternary operator instead: 
 
 ```ruby
 age = 1
@@ -40,7 +44,7 @@ age < 2 ? "baby" : "not a baby"
 
 How does this work? In the above statement, the code before the `?` ("question mark") is evaluated as a boolean expression. If it returns true, the code on the left side of the `:` ("colon") will run, otherwise the code on the right will will run. 
 
-It's a way of expressing on `if` and an `else` statement together on one line in this format:
+It's a way of expressing an `if` and an `else` statement together on one line in this format:
 
 ```ruby
 conditional ? action_if_true : action_if_false
@@ -53,6 +57,29 @@ Our first implementation of our are-you-a-baby? program required six lines of co
 
 **A Note on Usage:** *We use the ternary operator in a case like the one here when the* `if` *&* `else` *statement pair that we would otherwise construct is* **very simple.** *If your situation requires* `if` *and* `elsif` *statements, then the switching is too complex for the ternary operator making it inappropriate to use.*
 
+## Statement Modifiers
+Ruby has a useful feature called a statement modifier that allows you to put a conditional at the end of a statement. For example, let's consider this statement:
+
+```ruby
+puts "Hey, it's 2015!"
+``` 
+
+However, we don't want to say "Hey, it's 2015!" every time this code is run. We only want to say it's 2015 if it's actually 2015. This is a good case for an `if` statement modifier.
+
+```ruby
+this_year = Time.now.year
+puts "Hey, it's 2015!" if this_year == "2015"
+``` 
+Now, with the statement modifier `if this_year == "2015"` we are only putting it if the year is, in fact, 2015.
+
+We can also use `unless` in a statement modifier as well. 
+
+```ruby
+this_year = Time.now.year
+puts "Hey, it's not 2015!" unless this_year == "2015"
+``` 
+
+
 ## Instructions
 
 1. Fork and clone this lab. 
@@ -61,7 +88,7 @@ Our first implementation of our are-you-a-baby? program required six lines of co
   * Use an `if`/`else` statement pair to build the `unsafe?` method. It should return `true` if the speed is either below `40` or above `60`. *Going 30 mph on the freeway would be unsafe, as would going 95 mph. Going 50 miles per hour, however, would return `false` as that's within the "safe" range.*
 4.  Build the method `not_safe?` that is a version of your previous `unsafe?` method but use the ternary operator (`?:`) instead of an `if`/`else` statement pair.
 
-**A Debugging Reminder:** You can interact with your methods by typing `require 'pry'` at the top of your file and then placing the line `binding.pry` inside the method that you want to play around with. Then, when you run the test suite using `learn` in your terminal, your program will freeze when it hits the binding and you'll be able to explore your method inside your console.
+**A Debugging Reminder:** You can interact with your methods by typing `require 'pry'` at the top of your file, running `gem install pry` in the terminal, and then placing the line `binding.pry` inside the method that you want to play around with. Then, when you run the test suite using `learn` in your terminal, your program will freeze when it hits the binding and you'll be able to explore your method inside your console.
 
 ## Resources
 
